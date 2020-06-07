@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">TP03 - ASP NET</h1>
+        <h2 class="display-4">Gerenciamento de Aniversários</h2>
+    </div>
+
+    <div id="Menu">
+        
+        <ul>
+            <li><h3><a asp-area="" asp-controller="Lista" asp-action="Index">Visualize os Aniversariantes Cadastrados</a></h3></li>
+            <li><h3> <a asp-area="" asp-controller="Lista" asp-action="Novo">Cadastre um Aniversariante</a> </h3></li>
+        </ul>
+    </div>
+
+
+<style>
+    #Menu{
+        width:600px;
+        margin:0 auto;
+   
+    }
+</style>

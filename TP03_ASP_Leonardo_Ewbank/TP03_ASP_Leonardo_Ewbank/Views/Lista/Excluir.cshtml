@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Excluir";
+}
+@model Aniversariantes
+
+
+<h1>Excluir Aniversariante</h1>
+<br />
+<h2> Gostaria de excluir o @Model.nome de sua lista ?</h2>
+
+<form method="post" asp-action="Remover" asp-controller="Lista" asp-route-id="@Model.Id" id="form_cad">
+
+    <div id="btn">
+        <a class="btn btn-dark" href="/Lista" id="btn_volta">Voltar</a>
+        <button type="submit" class="btn btn-danger">Excluir</button>
+    </div>
+</form>
+
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    h2{
+        text-align:center;
+    }
+
+    #form_cad {
+        display: block;
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
