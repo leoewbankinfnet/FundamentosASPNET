@@ -16,11 +16,22 @@
     </div>
 }
 
+<div id="buscar">
+    <h5 >Filtrar por Nome ou Sobrenome</h5>
 
-
+    <div id="f_busca">
+        @using (Html.BeginForm())
+        {
+            <p>
+                Nome: @Html.TextBox("SearchName")
+                <input type="submit" value="Buscar" />
+            </p>
+        }
+    </div>
+</div>
 <table id="Lista_Aniversario">
 
-   <thead>
+    <thead>
         <tr>
             <th> Nome</th>
             <th> Data de Nascimento</th>
@@ -70,5 +81,13 @@
     #btn_cad {
         margin: 0 auto;
         margin-top: 10px;
+    }
+    #buscar{
+        display:block;
+        margin:0 auto;
+        text-align:center;
+        border:1px solid red;
+        width:400px;
+        border-radius:10px;    
     }
 </style>

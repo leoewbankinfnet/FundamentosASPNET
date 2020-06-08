@@ -11,10 +11,15 @@ namespace TP03_ASP_Leonardo_Ewbank.Controllers
     {
         public static List<Aniversariantes> AniverCadastrados { get; set; } = new List<Aniversariantes>();
 
-        public IActionResult Index(string? message)
+        public IActionResult Index(string? message, string? searchName)
         {
             ViewBag.Message = message;
 
+            if (!String.IsNullOrEmpty(searchName))
+            {
+                var Encontrados = AniverCadastrados.Where(x => x.nome.Contains(searchName) || x.sobrenome.Contains(searchName));
+                return View(Encontrados.ToList());
+            }
             
 
             return View(AniverCadastrados);
