@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@model List<Aniversariantes>;
+
+
+<div id="inicio" class="text-center">
+    <h2 class="display-4">AT - ASP NET</h2>
+    <h3 class="display-4">Gerenciamento de Aniversários</h3>
+</div>
+
+<div id="Menu">
+
+    <ul>
+        <h4>Acesso Rápido</h4>
+        <li><h5><a asp-area="" asp-controller="Lista" asp-action="Index">Visualize os Aniversariantes Cadastrados</a></h5></li>
+        <li><h5> <a asp-area="" asp-controller="Lista" asp-action="Novo">Cadastre um Aniversariante</a> </h5></li>
+    </ul>
+</div>
+
+<div id="AnivDia">
+    <table id="Lista_Aniversario">
+        <h4>Aniversariantes do dia</h4>
+        <thead>
+            <tr>
+                <th> Nome</th>
+                <th> Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aniversariante in Model)
+            {
+                @if (aniversariante.DataNascimento.Month == DateTime.Today.Month && aniversariante.DataNascimento.Day == DateTime.Today.Day)
+                {
+                <tr>
+                    <td> @aniversariante.nome  @aniversariante.sobrenome</td>
+                    <td> @aniversariante.DataNascimento.ToString("dd/MM/yyyy")</td>
+                </tr>
+                 }
+              }
+    </table>
+
+</div>
+<br />  
+<br />
+
+<div id="AnivDia">
+    <table id="Lista_Aniversario">
+        <h4> Próximos aniversariantes</h4>
+        <thead>
+            <tr>
+                <th> Nome</th>
+                <th> Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aniversariante in Model)
+            {
+               
+                    <tr>
+                        <td> @aniversariante.nome  @aniversariante.sobrenome</td>
+                        <td> @aniversariante.DataNascimento.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                
+            }
+    </table>
+
+</div>
+
+
+<style>
+    #inicio {
+        margin-bottom: 20px;
+        background: rgb(174,186,238);
+        background: radial-gradient(circle, rgba(174,186,238,1) 0%, rgba(148,187,233,1) 100%);
+        width:900px;
+        text-align:center;
+        margin:0 auto;
+        margin-bottom:10px;
+    }
+    #Menu {
+        width: 600px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        border: 1px solid red;
+        border-radius: 10px;
+        margin-top: 10px;
+        list-style-type: none;
+    }
+    #Menu h4{
+        text-align:center;
+        
+    }
+    #AnivDia{
+         text-align:center;
+         margin-bottom:10px;
+     }
+    #Lista_Aniversario {
+        width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 20px;
+        border: 1px dashed red;
+    }
+</style>

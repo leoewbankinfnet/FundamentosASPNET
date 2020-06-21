@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Aniversariantes</h1>
+
+@model List<Aniversariantes>
+
+
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<div id="buscar">
+    <h5 >Filtrar por Nome ou Sobrenome</h5>
+
+    <div id="f_busca">
+        @using (Html.BeginForm())
+        {
+            <p>
+                Nome: @Html.TextBox("SearchName")
+                <input type="submit" value="Buscar" />
+            </p>
+        }
+    </div>
+</div>
+<table id="Lista_Aniversario">
+
+    <thead>
+        <tr>
+            <th> Nome</th>
+            <th> Data de Nascimento</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aniversariante in Model)
+        {
+            <tr>
+                <td> @aniversariante.nome  @aniversariante.sobrenome</td>
+                <td> @aniversariante.DataNascimento.ToString("dd/MM/yyyy")</td>
+                <td> <a class="btn btn-info btn-sm" href="/Lista/Detalhes?id=@aniversariante.Id"> Detalhes </a> </td>
+                <td> <a class="btn btn-dark btn-sm" href="/Lista/Editar?id=@aniversariante.Id"> Editar </a> </td>
+                <td> <a class="btn btn-warning  btn-sm" href="/Lista/Excluir?id=@aniversariante.Id"> Remover </a> </td>
+            </tr>
+        }
+</table>
+<div id="bot">
+    <a class="btn btn-dark" asp-controller="Lista" asp-action="Novo" id="btn_cad">Cadastrar aniversariante</a>
+</div>
+
+<style>
+    #Lista_Aniversario {
+        width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 50px;
+        border: 1px solid black;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #bot {
+        display: flex;
+    }
+
+    #btn_cad {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    #buscar{
+        display:block;
+        margin:0 auto;
+        text-align:center;
+        border:1px solid red;
+        width:400px;
+        border-radius:10px;    
+    }
+</style>

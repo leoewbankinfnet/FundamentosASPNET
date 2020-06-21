@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Detalhes";
+}
+@model Aniversariantes
+
+
+<h1>Detalhes</h1>
+<h2>Detalhes do @Model.nome</h2>
+<div id="tudo">
+    <ul>
+        <li>Nome Completo:@Model.nome @Model.sobrenome</li>
+        <li>Data de Aniversário:@Model.DataNascimento.ToString("dd/MM/yyyy")</li>
+        <li>Id:@Model.Id</li>
+    </ul>
+
+</div>
+<div id="btn">
+    <a class="btn btn-danger" href="/Lista" id="btn_volta">Voltar</a>
+    <a class="btn btn-dark" href="/Lista/Editar?id=@Model.Id"> Editar</a>
+</div>
+
+<style>
+    h1{ 
+        text-align:center;
+    }
+    h2{
+        text-align:center;
+    }
+    #tudo {
+        display:flex;
+        margin:0 auto;
+        width:400px;
+        font-size:1.1EM;
+    }
+    #btn{
+        display:flex;
+        margin:0 auto;
+        width:200px;
+        align-items:center;
+        justify-content:space-around;
+        
+        padding:10px;
+        
+           
+
+    }
+    
+</style>
