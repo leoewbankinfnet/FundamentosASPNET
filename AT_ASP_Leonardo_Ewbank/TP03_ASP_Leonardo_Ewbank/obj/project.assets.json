@@ -8371,11 +8371,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leona\\Downloads\\Aulas_Fundamentos Web ASP.NET\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank.csproj",
+      "projectUniqueName": "C:\\Users\\leona\\Documents\\GitHub\\FundamentosASPNET\\AT_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank.csproj",
       "projectName": "TP03_ASP_Leonardo_Ewbank",
-      "projectPath": "C:\\Users\\leona\\Downloads\\Aulas_Fundamentos Web ASP.NET\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank.csproj",
+      "projectPath": "C:\\Users\\leona\\Documents\\GitHub\\FundamentosASPNET\\AT_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank.csproj",
       "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leona\\Downloads\\Aulas_Fundamentos Web ASP.NET\\TP03_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\obj\\",
+      "outputPath": "C:\\Users\\leona\\Documents\\GitHub\\FundamentosASPNET\\AT_ASP_Leonardo_Ewbank\\TP03_ASP_Leonardo_Ewbank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

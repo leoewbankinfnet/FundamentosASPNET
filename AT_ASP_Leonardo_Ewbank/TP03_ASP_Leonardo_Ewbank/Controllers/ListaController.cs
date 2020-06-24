@@ -25,7 +25,6 @@ namespace TP03_ASP_Leonardo_Ewbank.Controllers
                 var Encontrados = AniversarianteRepository.BuscarPorNome(searchName);
                 return View(Encontrados);
             }
-            //https://stackoverflow.com/questions/37845354/creating-a-search-bar-c-sharp-mvc// 
 
             return View(AniversarianteRepository.ListarTodos());
         }

@@ -12,20 +12,20 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 {
     public class AniversarianteRepository
     {
-        public string ConnectionStirng { get; set; }
+        public string ConnectionString { get; set; }
 
 
         //Configuracao para a aplicacao receber a conexao da base de dados
         public AniversarianteRepository(IConfiguration configuration)
         {
-            this.ConnectionStirng = configuration.GetConnectionString("AniversariantesConnection");
+            this.ConnectionString = configuration.GetConnectionString("AniversariantesConnection");
         }
         //Conectar ao banco de dados
 
         public void Salvar(Aniversariantes aniversariante)
         {
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if(connection.State != System.Data.ConnectionState.Open)
@@ -48,7 +48,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
         public void Editar(Aniversariantes aniversariante)
         {
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -74,7 +74,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
         public void Deletar(Guid Id)
         {
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -99,7 +99,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 
 
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -120,7 +120,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
                         Id = Guid.Parse(reader["Id"].ToString()),
                         nome = reader["Nome"].ToString().Split(" ").First(),
                         sobrenome = reader["Nome"].ToString().Split(" ").Last(),
-                        DataNascimento = DateTime.Parse(reader["DataAniversario"].ToString())
+                        DataNascimento = Convert.ToDateTime(reader["DataAniversario"])
                     };
                     todos.Add(aniversariante);
                 }
@@ -138,7 +138,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 
 
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -160,7 +160,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
                         Id = Guid.Parse(reader["Id"].ToString()),
                         nome = reader["Nome"].ToString().Split(" ").First(),
                         sobrenome = reader["Nome"].ToString().Split(" ").Last(),
-                        DataNascimento = DateTime.Parse(reader["DataAniversario"].ToString())
+                        DataNascimento = Convert.ToDateTime(reader["DataAniversario"])
                     };
                     todos.Add(aniversariante);
                 }
@@ -178,7 +178,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 
 
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -200,14 +200,11 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
                         Id = Guid.Parse(reader["Id"].ToString()),
                         nome = reader["Nome"].ToString().Split(" ").First(),
                         sobrenome = reader["Nome"].ToString().Split(" ").Last(),
-                        DataNascimento = DateTime.Parse(reader["DataAniversario"].ToString())
+                        DataNascimento = Convert.ToDateTime(reader["DataAniversario"])
                     };
                     todos.Add(aniversariante);
                 }
-
-
                 connection.Close();
-
             }
             return todos;
         }
@@ -218,7 +215,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 
 
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -247,11 +244,8 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
                 connection.Close();
 
             }
-  
 
-
-
-            return todos;
+             return todos;
         }
 
 
@@ -262,7 +256,7 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
 
 
             //COnectar ao banco de dados, deve-se criar uma conexao
-            using (var connection = new SqlConnection(this.ConnectionStirng))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 //abrir a conexao com o banco de dados
                 if (connection.State != System.Data.ConnectionState.Open)
@@ -276,14 +270,6 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
                                             FROM Aniversariantes
                                             WHERE DATEPART(DAYOFYEAR,convert(date,DataAniversario,103)) - DATEPART(DAYOFYEAR,GETDATE()) >= 0
                                             ORDER BY ABS(DATEPART(DAYOFYEAR,convert(date,DataAniversario,103)) - DATEPART(DAYOFYEAR,GETDATE()))";
-                    
-                    
-                    //@"SELECT Id, Nome, DataAniversario,abs(DATEDIFF(DAYOFYEAR,DATEPART(DAYOFYEAR,convert(date,DataAniversario,103)),DATEPART(DAYOFYEAR,GETDATE()))) FROM Aniversariantes 
-                    //ORDER BY abs(DATEDIFF(DAYOFYEAR,DATEPART(DAYOFYEAR,convert(date,DataAniversario,103)),DATEPART(DAYOFYEAR,GETDATE()))) ASC";
-
-                    //@"SELECT Id, Nome, DataAniversario FROM Aniversariantes 
-                    //ORDER BY abs(DATEDIFF(DAYOFYEAR,DATEPART(DAYOFYEAR,convert(date,DataAniversario,103)),GETDATE())) ASC";
-
 
                 SqlDataReader reader = sqlcommand.ExecuteReader();
 
@@ -305,11 +291,6 @@ namespace TP03_ASP_Leonardo_Ewbank.Repository
             }
             return todos;
         }
-
-
-
-
-
 
     }
 }
